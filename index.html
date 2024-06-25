@@ -76,9 +76,6 @@
             // 在脚本插入执行之前，劫持部分方法让父应用去执行
             // document.querySelector 不应该是 iframe 中的，而使用 shadowRoot 去执行
 
-            // 例如浮窗：document.body.appendChild(document.createElement())，劫持到 全局的 `window` 去执行
-            // iframe 中的路由管理 history.pushState，将这些方法同步到主应用
-
             // 让 iframe 和 shadowRoot 进行通信
             Object.defineProperty(iframeWindow.Document.prototype, "querySelector", {
                 get() {
