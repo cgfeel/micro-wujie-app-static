@@ -31,8 +31,13 @@
         const strScript = `
             window.a = 100;
             const ele = document.querySelector("#inner");
+            const span = document.createElement("span");
 
-            console.log('inner app', window.a, ele);
+            span.className = "inner-span";
+            span.innerText = " - span text form inner App.";
+
+            ele.appendChild(span);
+            console.log('inner app', window.a, ele, span);
         `;
     </script>
     <script>
@@ -113,7 +118,9 @@
         }
 
         createCustomElement();
-        console.log("out app", window.a, document.querySelector("#inner"));
+        console.log(
+            "out app", window.a, document.getElementById("inner"), document.querySelector(".inner-span")
+        );
     </script>
 </body>
 </html>
