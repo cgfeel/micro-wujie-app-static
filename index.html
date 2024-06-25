@@ -78,8 +78,9 @@
                 get() {
                     // 加载的脚本内部调用了 querySelector，返回一个代理对象将上下文指向 shadowRoot
                     return new Proxy(sandbox.shadowRoot.querySelector, {
-                        // target 在 iframe 中的原始方法，thisArgs 上下文，在 iframe 中的 document，args 传入的参数
+                        // target 调用的方法，thisArgs 传入的上下文，args 传入的参数
                         apply(target, thisArgs, args) {
+                            console.log(target, thisArgs, args);
                             // 将 iframe 执行 querySelect 方法中的上下文 `document` 换成了 shadowRoot
                             return thisArgs.querySelector.apply(sandbox.shadowRoot, args);
                         }
