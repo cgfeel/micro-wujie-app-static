@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <!-- npx http-server --port 30000 --cors -->
+    <div id="app"></div>
+    <script>
+        if (window.__POWERED_BY_WUJIE__) {
+            window.__WUJIE_MOUNT = () => {
+                const app = document.getElementById("app");
+                app.innerHTML = '我存在的目的就是为验证没有 `head` 的 `umd` 模式';
+            };
+            window.__WUJIE_UNMOUNT = () => {
+                const app = document.getElementById("app");
+                app.innerHTML = '';
+            };
+        } else {
+            const app = document.getElementById("app");
+            app.innerHTML = '我存在的目的就是为验证没有 `head` 的 `umd` 模式';
+        }
+    </script>
+</body>
+</html>
